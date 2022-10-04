@@ -1,0 +1,8 @@
+<div class="row review" >
+    <div [ngClass]="selectedImages.length === 1 ? 'col-sm-12 col-md-12' : selectedImages.length === 2 ? 'col-sm-6 col-md-6' :'col-sm-4 col-md-4' " *ngFor="let image of selectedImages">
+        <figure>
+            <img [src]="image.imageUrl" class="img-thumbnail grayscale">
+            <figcaption>{{ image.imageName }} - {{ image.imageTimestamp | date: 'dd MMMM yyyy HH:mm'}}</figcaption>
+        </figure>
+    </div>
+</div>

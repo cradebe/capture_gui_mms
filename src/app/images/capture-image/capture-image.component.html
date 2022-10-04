@@ -1,0 +1,11 @@
+<form [formGroup]="imageUploadForm" (ngSubmit)="uploadImageData(imageUploadForm)" class="image-upload-form">
+    <label class="btn capture-image">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" capture="environment">
+        Capture New Image
+    </label>
+    <img class="img-thumbnail" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" *ngIf="hasSelectedImage" />
+    <div class="upload-container">
+        <input type="text" name="name" formControlName="name" placeholder="Image Name" class="image-name">
+        <input [disabled]="!hasSelectedImage" type="submit" class="btn capture-image" value="Upload Image">
+    </div>
+</form>

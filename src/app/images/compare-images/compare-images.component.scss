@@ -1,0 +1,90 @@
+.compare-section-container{
+    height: 100%;
+    border-left: var(--primary-border);
+    background-color: var(--secondary-background);
+    position: fixed;
+    .title-container{
+        // height: 10%;
+        .title {
+            display: flex;
+            justify-content: center;
+            border-bottom: solid black 1px;
+            padding-bottom: var(--primary-spacing);
+            background-color: var(--primary);
+            max-height: max-content;
+            margin: 0;
+        }
+    }
+    .compare-list{
+        max-height: 45vh;
+        overflow-y: scroll;
+        .image-list{
+            padding: 0;
+            .image-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: var(--primary-transition);
+                padding: 0 var(--primary-spacing) 0 var(--primary-spacing);
+                .img-thumbnail{
+                    max-width: 20%;
+                    margin: var(--thumbnail-margin) 0 var(--thumbnail-margin) 0;
+                }
+                &.active{
+                    background-color: var(--primary-select);
+                    color: var(--primary);
+                }
+                &:hover{
+                    border-radius: var(--border-radius);
+                    background-color: var(--secondary-select);
+                    color: var(--primary);
+                    transition: 0.2s ease;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .selected-compare{
+        // display: flex;
+        // flex-direction: column;
+        position: relative;
+        border-top: var(--primary-border);
+        max-height: 30vh;
+        .selected-image-list{
+            padding: 0;
+            .selected-image-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: var(--primary-transition);
+                padding: 0 var(--primary-spacing) 0 var(--primary-spacing);
+                .img-thumbnail{
+                    max-width: 50%;
+                    margin: var(--thumbnail-margin) 0 var(--thumbnail-margin) 0;
+                }
+                &:hover{
+                    border-radius: var(--border-radius);
+                    background-color: var(--secondary-select);
+                    color: var(--primary);
+                    transition: 0.2s ease;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .compare-btn{
+        position: absolute;
+        min-width: 100%;
+        background-color: var(--secondary-select);
+        color: var(--primary);
+        bottom: 0;
+        right: 0;
+        transition: var(--primary-transition);
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        &:hover{
+            background-color: var(--primary-select);
+            transition: var(--primary-transition);
+        }
+    }
+}

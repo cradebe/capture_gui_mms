@@ -1,0 +1,36 @@
+.image-upload-form{
+    margin-bottom: 1rem;
+    input[type="file"] {
+        display: none;
+    }
+    ::placeholder {
+        text-align: center;
+    }
+    
+    .capture-image{
+        min-width: 100%;
+        background-color: var(--secondary-select);
+        color: var(--primary);
+        bottom: 0;
+        right: 0;
+        transition: var(--primary-transition);
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        &:hover{
+            background-color: var(--primary-select);
+            transition: var(--primary-transition);
+        }
+    }
+    .image-name{
+        width: 100%;
+    }
+}
+// .capture-image{
+//     border: 1px solid #ccc;
+//     display: inline-block;
+//     padding: 6px 12px;
+//     cursor: pointer;
+//     #image-capture{
+//         background-color: aqua;
+//     }
+// }

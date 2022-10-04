@@ -1,0 +1,27 @@
+<div class="compare-section-container">
+    <div class="title-container">
+        <h4 class="title">{{ compareTitle }}</h4>
+        <app-capture-image [images]="images"></app-capture-image>
+    </div>
+    <div class="compare-list row g-0">
+        <ul class="image-list">
+            <li *ngFor="let image of images" (click)="selectCompare(image)" class="image-item" [ngClass]="{'active': selectedImages.includes(image)}">
+                {{ image.imageName }} - {{ image.imageTimestamp | date: 'dd MMMM yyyy' }}
+                <img [src]="image.imageUrl" alt="" class="rounded img-thumbnail">
+            </li>
+        </ul>
+    </div>
+    <div class="selected-compare">
+        <ul class="selected-image-list" *ngIf="selectedImages.length !== 0; else noImages">
+            <li *ngFor="let selectedImage of selectedImages" (click)="removeSelected(selectedImage)" class="selected-image-item" >
+                <img [src]="selectedImage.imageUrl" alt="" class="rounded img-thumbnail">
+                {{ selectedImage.imageName }}
+            </li>
+        </ul>
+        <ng-template #noImages>
+            <p  class="selected-image-item">
+            </p>Select up to 3 Images for review </ng-template>
+    </div>
+    <button [disabled]="selectedImages.length < 1" (click)="toggleReview()" class="compare-btn btn">Review</button>
+    <!-- [routerLink]="['/comparison']" -->
+</div>
