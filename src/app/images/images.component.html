@@ -1,12 +1,13 @@
+
   <div class="images-container row g-0 h-100">
     <div class="image-list col-md-10">
-    <app-list-images [images]="images"  *ngIf="!reviewing"></app-list-images>
-    <app-image-review [selectedImages]="selectedImages"  *ngIf="reviewing"></app-image-review>
+      <app-navbar (close)="closeReview($event)"></app-navbar>
+      <app-list-images (openReview)="toggleReview($event)" [images]="images" *ngIf="!reviewing"></app-list-images>
+      <app-image-review [selectedImages]="selectedImages" *ngIf="reviewing"></app-image-review>
     </div>
     <div class="image-compare col-md-2">
-      <app-compare-images [images]="images" 
+      <app-compare-images [images]="images" [selectedImages]="selectedImages" 
       (reviewClicked)="toggleReview($event)" 
       (reviewImageRemoved)="imageRemoved($event)"></app-compare-images>
     </div>
-    <app-image-review></app-image-review>
   </div>

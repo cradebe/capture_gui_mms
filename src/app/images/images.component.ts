@@ -12,8 +12,8 @@ import { ImageService } from './image.service';
 export class ImagesComponent implements OnInit {
   @Input() images: Image[] = []
   @Input() selectedImages: Image[] = []
+  
   reviewing = false
-
   pageTitle = 'Dashboard';
 
   constructor(private imageService: ImageService) { }
@@ -30,6 +30,13 @@ export class ImagesComponent implements OnInit {
 
   imageRemoved(selectedImages: Image[]){
     this.selectedImages = selectedImages
+    if (this.selectedImages.length === 0){
+      this.reviewing = false
+    }
+  }
+
+  closeReview(closeReview: boolean){
+    this.reviewing = closeReview
   }
 
   toggleReview(selectedImages: Image[]){

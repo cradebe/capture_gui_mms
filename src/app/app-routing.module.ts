@@ -4,9 +4,9 @@ import { ImagesComponent } from './images/images.component';
 import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
-  {path: 'landing', component: LandingComponent},
+  {path: 'home', component: LandingComponent},
   {path: 'dashboard', component: ImagesComponent},
-  {path: '', redirectTo: '/landing', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 
 @NgModule({

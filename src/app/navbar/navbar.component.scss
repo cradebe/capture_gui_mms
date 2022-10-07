@@ -1,0 +1,13 @@
+.navbar{
+    height: 5%;
+    border-bottom: var(--primary-border);
+    margin-bottom: var(--primary-spacing);
+    .nav-link{
+        color: black;
+        transition: var(--primary-transition);
+        &:hover{
+            color: var(--secondary-select);
+            transition: var(--primary-transition);
+        }
+    }
+}

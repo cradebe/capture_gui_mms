@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Image } from '../image';
 
@@ -9,6 +9,7 @@ import { Image } from '../image';
 })
 export class ListImagesComponent implements OnInit {
   @Input() images: Image[] = []
+  @Output() openReview: EventEmitter<Image[]> = new EventEmitter()
 
   constructor(private sanitiser: DomSanitizer) { }
 
@@ -16,10 +17,17 @@ export class ListImagesComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChange){
-    this.ngOnInit()
+    this.ngOnInit();
   }
 
   sanitiseImagePath(imagePath: string): SafeUrl {
     return this.sanitiser.bypassSecurityTrustUrl(imagePath);
+  }
+
+  goToReview(img: Image){
+    console.log('ss')
+    let images: Image[] = []
+    images.push(img)
+    this.openReview.emit(images);
   }
 }

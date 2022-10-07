@@ -16,7 +16,7 @@
         }
     }
     .compare-list{
-        max-height: 45vh;
+        max-height: 35vh;
         overflow-y: scroll;
         .image-list{
             padding: 0;
@@ -45,11 +45,13 @@
         }
     }
     .selected-compare{
-        // display: flex;
-        // flex-direction: column;
         position: relative;
         border-top: var(--primary-border);
-        max-height: 30vh;
+        .no-selected-image{
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
         .selected-image-list{
             padding: 0;
             .selected-image-item{

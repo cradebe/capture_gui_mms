@@ -13,7 +13,7 @@ export class CompareImagesComponent implements OnInit {
   @Output() reviewClicked: EventEmitter<Image[]> = new EventEmitter()
   @Output() reviewImageRemoved: EventEmitter<Image[]> = new EventEmitter()
 
-  selectedImages: Image[] = []
+  @Input() selectedImages: Image[] = []
 
   constructor() { }
 
@@ -25,6 +25,7 @@ export class CompareImagesComponent implements OnInit {
       this.selectedImages.push(image)
     }
   }
+  
   removeSelected(image: Image){
     this.selectedImages = this.selectedImages.filter( element => {return element != image})
     this.reviewImageRemoved.emit(this.selectedImages)

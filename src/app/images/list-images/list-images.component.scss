@@ -1,0 +1,13 @@
+.list-images-container {
+    min-height: 95%;
+    .empty-images{
+        border-top: var(--primary-border) ;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .img-thumbnail{
+        cursor: pointer;
+    }
+}

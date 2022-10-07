@@ -1,11 +1,21 @@
-<form [formGroup]="imageUploadForm" (ngSubmit)="uploadImageData(imageUploadForm)" class="image-upload-form">
+<form [formGroup]="imageUploadForm" 
+        (ngSubmit)="uploadImageData(imageUploadForm)" 
+        #localForm="ngForm"
+        class="image-upload-form form-group">
+
     <label class="btn capture-image">
         <input type="file" (change)="onFileSelected($event)" accept="image/*" capture="environment">
         Capture New Image
     </label>
-    <img class="img-thumbnail" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" *ngIf="hasSelectedImage" />
+    
+    <img class="img-thumbnail" [src]="imageSrc" alt="your image" *ngIf="hasSelectedImage" />
     <div class="upload-container">
-        <input type="text" name="name" formControlName="name" placeholder="Image Name" class="image-name">
+        <input type="text" formControlName="name" placeholder="Image Name"
+        class="image-name form-control" [class.is-invalid]="localForm.submitted && imageUploadForm.get('name')?.invalid">
+        <div class="invalid-feedback">
+            Image Name is required
+        </div>
         <input [disabled]="!hasSelectedImage" type="submit" class="btn capture-image" value="Upload Image">
+        <div [ngClass]="showError ? 'error' : 'success'" *ngIf="show">{{ message }}</div>
     </div>
 </form>

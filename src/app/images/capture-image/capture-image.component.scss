@@ -6,7 +6,6 @@
     ::placeholder {
         text-align: center;
     }
-    
     .capture-image{
         min-width: 100%;
         background-color: var(--secondary-select);
@@ -21,8 +20,20 @@
             transition: var(--primary-transition);
         }
     }
-    .image-name{
-        width: 100%;
+    .upload-container{
+        .image-name, .error, .success{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .error{
+            background-color: red;
+            color: var(--primary);
+        }
+        .success{
+            background-color: green;
+            color: var(--primary);
+        }
     }
 }
 // .capture-image{

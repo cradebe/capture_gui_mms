@@ -14,9 +14,13 @@ export class CaptureImageComponent implements OnInit {
   
   selectedImageFile: any;
   imageUploadForm: FormGroup;
-  mobile = false
-  hasSelectedImage = false
-  imageSrc: string = ''
+  mobile = false;
+  hasSelectedImage = false;
+  imageSrc: string = '';
+  message: string = '';
+  timeLimit = 5000;
+  show = false;
+  showError = false;
 
   constructor(
     private fb: FormBuilder, 
@@ -24,9 +28,8 @@ export class CaptureImageComponent implements OnInit {
     private imageService: ImageService
   ) { 
     this.imageUploadForm = this.fb.group({
-      name: ['', Validators.required]
-    })
-
+      name: this.fb.control('', [Validators.required, Validators.minLength(3)])
+    }, { updateOn: 'submit' })
   }
 
   ngOnInit(): void {
@@ -47,10 +50,29 @@ export class CaptureImageComponent implements OnInit {
   }}
 
   uploadImageData(form: FormGroup){
-    const file_data = new FormData();
-    file_data.append('image', this.selectedImageFile, this.imageUploadForm.value.name);
-    this.imageService.uploadImages(file_data).subscribe((data:Image) => {this.images.push(data) })
-    this.imageUploadForm.reset()
-    this.hasSelectedImage = false
+    if (form.valid){
+      const file_data = new FormData();
+      file_data.append('image', this.selectedImageFile, this.imageUploadForm.value.name);
+      this.imageService.uploadImages(file_data).subscribe({
+        next:(data:any) => { 
+          this.images.push(data)
+          this.message = 'Upload Successful'
+          this.show =  true
+          this.showError =  false
+          setTimeout(() => this.show = false, this.timeLimit)
+        }, 
+        error: (err) => {
+          this.message = 'Upload Error'
+          this.showError =  true
+          this.show =  true
+          setTimeout(() => this.show = true, this.timeLimit)
+        },
+        complete: () => {
+          this.hasSelectedImage = false
+          this.imageUploadForm.reset()
+          this.imageUploadForm.controls['name'].setErrors(null)
+        }
+    })
+    }
   }
 }

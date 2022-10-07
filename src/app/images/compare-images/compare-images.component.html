@@ -19,9 +19,10 @@
             </li>
         </ul>
         <ng-template #noImages>
-            <p  class="selected-image-item">
-            </p>Select up to 3 Images for review </ng-template>
+            <div class="no-selected-image">
+                <h4>Select up to 3 Images for review</h4>
+            </div>
+         </ng-template>
     </div>
     <button [disabled]="selectedImages.length < 1" (click)="toggleReview()" class="compare-btn btn">Review</button>
-    <!-- [routerLink]="['/comparison']" -->
 </div>
