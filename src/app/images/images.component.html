@@ -1,6 +1,6 @@
 
   <div class="images-container row g-0 h-100">
-    <div class="image-list col-md-10">
+    <div class="image-list col-md-10" *ngIf="!isMobile">
       <app-navbar (close)="closeReview($event)"></app-navbar>
       <app-list-images (openReview)="toggleReview($event)" [images]="images" *ngIf="!reviewing"></app-list-images>
       <app-image-review [selectedImages]="selectedImages" *ngIf="reviewing"></app-image-review>

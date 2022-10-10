@@ -17,11 +17,10 @@ export class ImageService {
   public getImages(): Observable<Image[]>{
     return this.httpClient.get(this.baseUrl).pipe(map((data: any) => data))
   }
+
   public getImage(id: number){}
 
-  public uploadImages(data: any):Observable<Image> {
-    let t = this.httpClient.post(this.baseUrl + 'upload', data).pipe(map((data: any) => data.status))
-    console.log(t.subscribe(data => data))
+  public uploadImages(data: any): Observable<Image> {
     return this.httpClient.post(this.baseUrl + 'upload', data).pipe(map((data: any) => data))
   }
 }

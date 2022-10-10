@@ -25,7 +25,6 @@ export class ListImagesComponent implements OnInit {
   }
 
   goToReview(img: Image){
-    console.log('ss')
     let images: Image[] = []
     images.push(img)
     this.openReview.emit(images);

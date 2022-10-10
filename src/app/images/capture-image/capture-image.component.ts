@@ -53,6 +53,7 @@ export class CaptureImageComponent implements OnInit {
     if (form.valid){
       const file_data = new FormData();
       file_data.append('image', this.selectedImageFile, this.imageUploadForm.value.name);
+      
       this.imageService.uploadImages(file_data).subscribe({
         next:(data:any) => { 
           this.images.push(data)

@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { map } from 'rxjs/operators';
 import { Image } from './image';
 import { ImageService } from './image.service';
 
@@ -12,7 +10,7 @@ import { ImageService } from './image.service';
 export class ImagesComponent implements OnInit {
   @Input() images: Image[] = []
   @Input() selectedImages: Image[] = []
-  
+  isMobile = false;
   reviewing = false
   pageTitle = 'Dashboard';
 
@@ -20,6 +18,9 @@ export class ImagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getImageData()
+    if (window.screen.width <= 1180) {
+      this.isMobile = true;
+    }
   }
 
   getImageData(){
